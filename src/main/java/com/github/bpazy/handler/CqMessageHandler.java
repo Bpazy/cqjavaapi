@@ -1,7 +1,6 @@
-package com.github.bpazy.serviceimpl;
+package com.github.bpazy.handler;
 
 import com.github.bpazy.message.*;
-import com.github.bpazy.service.MessageHandler;
 
 /**
  * Created by Ziyuan

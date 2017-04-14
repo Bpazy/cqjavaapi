@@ -1,5 +1,7 @@
 package com.github.bpazy.message;
 
+import com.github.bpazy.util.Decoder;
+
 /**
  * Created by Ziyuan
  * on 2017/4/14
@@ -30,7 +32,6 @@ public class PrivateMessage {
     }
 
     public String getText() {
-        // TODO
-        return null;
+        return Decoder.silentDecode(encodedText);
     }
 }

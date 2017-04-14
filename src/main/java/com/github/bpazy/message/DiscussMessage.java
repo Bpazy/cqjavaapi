@@ -1,5 +1,7 @@
 package com.github.bpazy.message;
 
+import com.github.bpazy.util.Decoder;
+
 /**
  * Created by Ziyuan
  * on 2017/4/14
@@ -37,5 +39,9 @@ public class DiscussMessage {
 
     public void setEncodedText(String encodedText) {
         this.encodedText = encodedText;
+    }
+
+    public String getText() {
+        return Decoder.silentDecode(encodedText);
     }
 }

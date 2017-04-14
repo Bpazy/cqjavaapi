@@ -1,4 +1,4 @@
-package com.github.bpazy.service;
+package com.github.bpazy.handler;
 
 import com.github.bpazy.message.*;
 
