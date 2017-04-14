@@ -44,4 +44,14 @@ public class DiscussMessage {
     public String getText() {
         return Decoder.silentDecode(encodedText);
     }
+
+    @Override
+    public String toString() {
+        return "DiscussMessage{" +
+                "discussID='" + discussID + '\'' +
+                ", QQ='" + QQ + '\'' +
+                ", encodedText='" + encodedText + '\'' +
+                ", decodedText='" + getText() + '\'' +
+                '}';
+    }
 }

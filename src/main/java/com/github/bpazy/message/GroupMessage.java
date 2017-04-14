@@ -44,4 +44,14 @@ public class GroupMessage {
     public String getText() {
         return Decoder.silentDecode(encodedText);
     }
+
+    @Override
+    public String toString() {
+        return "GroupMessage{" +
+                "groupID='" + groupID + '\'' +
+                ", QQ='" + QQ + '\'' +
+                ", encodedText='" + encodedText + '\'' +
+                ", decodedText='" + getText() + '\'' +
+                '}';
+    }
 }

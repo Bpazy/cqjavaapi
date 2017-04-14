@@ -34,4 +34,13 @@ public class PrivateMessage {
     public String getText() {
         return Decoder.silentDecode(encodedText);
     }
+
+    @Override
+    public String toString() {
+        return "PrivateMessage{" +
+                "QQ='" + QQ + '\'' +
+                ", encodedText='" + encodedText + '\'' +
+                ", decodedText='" + getText() + '\'' +
+                '}';
+    }
 }

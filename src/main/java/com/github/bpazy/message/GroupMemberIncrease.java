@@ -38,4 +38,13 @@ public class GroupMemberIncrease {
     public void setOperatedQQ(String operatedQQ) {
         this.operatedQQ = operatedQQ;
     }
+
+    @Override
+    public String toString() {
+        return "GroupMemberIncrease{" +
+                "groupID='" + groupID + '\'' +
+                ", QQ='" + QQ + '\'' +
+                ", operatedQQ='" + operatedQQ + '\'' +
+                '}';
+    }
 }
