@@ -1,6 +1,9 @@
 # cqjavaapi
 酷Q Java API base on cqsocketapi
 
+### 注意
+请先安装`酷Q`并启用`cqsocketapi`插件
+
 ### 一分钟使用
 ```
 // Create CqServer, this is the entrance.
