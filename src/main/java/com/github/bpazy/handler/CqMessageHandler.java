@@ -31,4 +31,9 @@ public class CqMessageHandler implements MessageHandler {
     public boolean groupMemberIncrease(GroupMemberIncrease msg) {
         return false;
     }
+
+    @Override
+    public boolean groupAdmin(GroupAdmin msg) {
+        return false;
+    }
 }

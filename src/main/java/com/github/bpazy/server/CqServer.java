@@ -77,40 +77,48 @@ public class CqServer {
     }
 
     protected void dispatchMessage(String msg) {
-        String[] msgs = msg.split(" ");
-        switch (msgs[0]) {
+        String[] args = msg.split(" ");
+        switch (args[0]) {
             case "ServerHello":
                 break;
             case "PrivateMessage":
                 for (MessageHandler handler : messageHandlers) {
-                    boolean finish = handler.privateMessage(new PrivateMessage(msgs[1], msgs[2]));
+                    boolean finish = handler.privateMessage(new PrivateMessage(args[1], args[2]));
                     if (finish) break;
                 }
                 break;
             case "GroupMessage":
                 for (MessageHandler handler : messageHandlers) {
-                    boolean finish = handler.groupMessage(new GroupMessage(msgs[1], msgs[2], msgs[3]));
+                    boolean finish = handler.groupMessage(new GroupMessage(args[1], args[2], args[3]));
                     if (finish) break;
                 }
                 break;
             case "DiscussMessage":
                 for (MessageHandler handler : messageHandlers) {
-                    boolean finish = handler.discussMessage(new DiscussMessage(msgs[1], msgs[2], msgs[3]));
+                    boolean finish = handler.discussMessage(new DiscussMessage(args[1], args[2], args[3]));
                     if (finish) break;
                 }
                 break;
             case "GroupMemberDecrease":
                 for (MessageHandler handler : messageHandlers) {
-                    boolean finish = handler.groupMemberDecrease(new GroupMemberDecrease(msgs[1], msgs[2], msgs[3]));
+                    boolean finish = handler.groupMemberDecrease(new GroupMemberDecrease(args[1], args[2], args[3]));
                     if (finish) break;
                 }
                 break;
             case "GroupMemberIncrease":
                 for (MessageHandler handler : messageHandlers) {
-                    boolean finish = handler.groupMemberIncrease(new GroupMemberIncrease(msgs[1], msgs[2], msgs[3]));
+                    boolean finish = handler.groupMemberIncrease(new GroupMemberIncrease(args[1], args[2], args[3]));
                     if (finish) break;
                 }
                 break;
+            case "GroupAdmin":
+                for (MessageHandler handler : messageHandlers) {
+                    boolean finish = handler.groupAdmin(new GroupAdmin(args[1], args[2], args[3]));
+                    if (finish) break;
+                }
+                break;
+            default:
+                logger.warn("Unknown event, {}", msg);
         }
     }
 

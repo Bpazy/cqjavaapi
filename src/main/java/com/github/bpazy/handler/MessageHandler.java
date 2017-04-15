@@ -17,4 +17,6 @@ public interface MessageHandler {
     boolean groupMemberDecrease(GroupMemberDecrease msg);
 
     boolean groupMemberIncrease(GroupMemberIncrease msg);
+
+    boolean groupAdmin(GroupAdmin msg);
 }
