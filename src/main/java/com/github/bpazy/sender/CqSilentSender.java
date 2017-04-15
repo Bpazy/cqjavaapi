@@ -38,7 +38,7 @@ public class CqSilentSender {
         }
     }
 
-    public void sendGroupBan(String groupID, String qq, String duration) {
+    public void sendGroupBan(String groupID, String qq, long duration) {
         try {
             sender.sendGroupBan(groupID, qq, duration);
         } catch (IOException e) {

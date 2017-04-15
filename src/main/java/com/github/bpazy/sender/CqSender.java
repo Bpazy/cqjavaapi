@@ -34,7 +34,7 @@ public class CqSender {
 
     private DatagramPacket buildMsgPacket(String flag, String msg) {
         try {
-            byte[] send = (flag + new String(Encoder.encode(msg), "UTF8")).getBytes("UTF8");
+            byte[] send = (flag + " " + new String(Encoder.encode(msg), "UTF8")).getBytes("UTF8");
             return new DatagramPacket(send, send.length, InetAddress.getByName("127.0.0.1"), 11235);
         } catch (UnsupportedEncodingException | UnknownHostException e) {
             logger.error("Encode error or Host name error", e);
@@ -43,7 +43,7 @@ public class CqSender {
     }
 
     private void sendMsgPacket(String flag, String msg) throws IOException {
-        DatagramPacket packet = buildMsgPacket(flag + " ", msg);
+        DatagramPacket packet = buildMsgPacket(flag, msg);
         server.send(packet);
     }
 
@@ -75,7 +75,7 @@ public class CqSender {
         sendMsgPacket("DiscussMessage " + discussID, msg);
     }
 
-    public void sendGroupBan(String groupID, String qq, String duration) throws IOException {
-        sendCmdPacket("GroupBan", groupID, qq, duration);
+    public void sendGroupBan(String groupID, String qq, long duration) throws IOException {
+        sendCmdPacket("GroupBan", groupID, qq, duration + "");
     }
 }
