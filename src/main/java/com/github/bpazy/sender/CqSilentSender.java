@@ -37,4 +37,12 @@ public class CqSilentSender {
             e.printStackTrace();
         }
     }
+
+    public void sendGroupBan(String groupID, String qq, String duration) {
+        try {
+            sender.sendGroupBan(groupID, qq, duration);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
