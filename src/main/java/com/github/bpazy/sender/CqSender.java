@@ -75,6 +75,10 @@ public class CqSender {
         sendMsgPacket("DiscussMessage " + discussID, msg);
     }
 
+    /**
+     * @param duration 单位秒
+     * @throws IOException
+     */
     public void sendGroupBan(String groupID, String qq, long duration) throws IOException {
         sendCmdPacket("GroupBan", groupID, qq, duration + "");
     }
