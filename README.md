@@ -4,14 +4,14 @@
 
 Gradle:
 ```
-compile 'com.github.bpazy:cqjavaapi:0.1.0'
+compile 'com.github.bpazy:cqjavaapi:0.1.3'
 ```
 Maven:
 ```
 <dependency>
   <groupId>com.github.bpazy</groupId>
   <artifactId>cqjavaapi</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.3</version>
   <type>pom</type>
 </dependency>
 ```
