@@ -35,7 +35,7 @@ public class CqServer {
                     server.receive(packet);
                     String msg = buildMessage(packet);
                     if (isNotHeartbeatMsg(msg)) {
-                        logger.info("Got message: {}", msg);
+                        logger.debug("Got message: {}", msg);
                     }
                     dispatchMessage(msg);
                 }
