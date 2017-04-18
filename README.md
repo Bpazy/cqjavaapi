@@ -1,10 +1,26 @@
 # cqjavaapi
-酷Q Java API base on cqsocketapi
+酷Q Java API base on cqsocketapi  
+
+
+Gradle:
+```
+compile 'com.github.bpazy:cqjavaapi:0.1.0'
+```
+Maven:
+```
+<dependency>
+  <groupId>com.github.bpazy</groupId>
+  <artifactId>cqjavaapi</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 ### 注意
 请先安装`酷Q`并启用`cqsocketapi`插件
 
 ### 一分钟使用
+
 ```
 // Create CqServer, this is the entrance.
 CqServer server = new CqServer();
