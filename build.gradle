@@ -1,9 +1,20 @@
 group 'com.github.bpazy'
-version '0.0.1'
+version '0.1.0'
 
+apply plugin: "maven-publish"
+apply plugin: 'com.jfrog.bintray'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -15,7 +26,6 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
-
 }
 
 task fatJar(type: Jar) {
@@ -26,4 +36,27 @@ task fatJar(type: Jar) {
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'com.github.bpazy'
+            artifactId 'cqjavaapi'
+            version project.version
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'maven'
+        name = 'cqjavaapi'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Bpazy/cqjavaapi.git'
+    }
 }
