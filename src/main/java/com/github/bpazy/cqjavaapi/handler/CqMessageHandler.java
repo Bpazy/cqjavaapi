@@ -1,6 +1,6 @@
-package com.github.bpazy.handler;
+package com.github.bpazy.cqjavaapi.handler;
 
-import com.github.bpazy.message.*;
+import com.github.bpazy.cqjavaapi.message.*;
 
 /**
  * Created by Ziyuan

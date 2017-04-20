@@ -1,4 +1,4 @@
-package com.github.bpazy.message;
+package com.github.bpazy.cqjavaapi.message;
 
 /**
  * Created by Ziyuan

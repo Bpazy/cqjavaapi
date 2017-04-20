@@ -1,4 +1,4 @@
-package com.github.bpazy.util;
+package com.github.bpazy.cqjavaapi.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

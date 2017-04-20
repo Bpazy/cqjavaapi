@@ -1,7 +1,7 @@
-package com.github.bpazy.server;
+package com.github.bpazy.cqjavaapi.server;
 
-import com.github.bpazy.handler.MessageHandler;
-import com.github.bpazy.message.*;
+import com.github.bpazy.cqjavaapi.handler.MessageHandler;
+import com.github.bpazy.cqjavaapi.message.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package com.github.bpazy.util;
+package com.github.bpazy.cqjavaapi.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;

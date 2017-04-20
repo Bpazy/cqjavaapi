@@ -1,28 +1,18 @@
-package com.github.bpazy.message;
+package com.github.bpazy.cqjavaapi.message;
 
-import com.github.bpazy.util.Decoder;
+import com.github.bpazy.cqjavaapi.util.Decoder;
 
 /**
  * Created by Ziyuan
  * on 2017/4/14
  */
-public class GroupMessage {
-    private String groupID;
+public class PrivateMessage {
     private String QQ;
     private String encodedText;
 
-    public GroupMessage(String groupID, String QQ, String encodedText) {
-        this.groupID = groupID;
+    public PrivateMessage(String QQ, String encodedText) {
         this.QQ = QQ;
         this.encodedText = encodedText;
-    }
-
-    public String getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
     }
 
     public String getQQ() {
@@ -47,9 +37,8 @@ public class GroupMessage {
 
     @Override
     public String toString() {
-        return "GroupMessage{" +
-                "groupID='" + groupID + '\'' +
-                ", QQ='" + QQ + '\'' +
+        return "PrivateMessage{" +
+                "QQ='" + QQ + '\'' +
                 ", encodedText='" + encodedText + '\'' +
                 ", decodedText='" + getText() + '\'' +
                 '}';

@@ -1,4 +1,4 @@
-package com.github.bpazy.sender;
+package com.github.bpazy.cqjavaapi.sender;
 
 import java.io.IOException;
 

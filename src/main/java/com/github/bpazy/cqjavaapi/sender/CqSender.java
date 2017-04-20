@@ -1,6 +1,6 @@
-package com.github.bpazy.sender;
+package com.github.bpazy.cqjavaapi.sender;
 
-import com.github.bpazy.util.Encoder;
+import com.github.bpazy.cqjavaapi.util.Encoder;
 import com.google.common.base.Joiner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
