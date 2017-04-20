@@ -1,11 +1,13 @@
 package com.github.bpazy.cqjavaapi.message;
 
 import com.github.bpazy.cqjavaapi.util.Decoder;
+import lombok.Data;
 
 /**
  * Created by Ziyuan
  * on 2017/4/14
  */
+@Data
 public class DiscussMessage {
     private String discussID;
     private String QQ;
@@ -17,41 +19,7 @@ public class DiscussMessage {
         this.encodedText = encodedText;
     }
 
-    public String getDiscussID() {
-        return discussID;
-    }
-
-    public void setDiscussID(String discussID) {
-        this.discussID = discussID;
-    }
-
-    public String getQQ() {
-        return QQ;
-    }
-
-    public void setQQ(String QQ) {
-        this.QQ = QQ;
-    }
-
-    public String getEncodedText() {
-        return encodedText;
-    }
-
-    public void setEncodedText(String encodedText) {
-        this.encodedText = encodedText;
-    }
-
     public String getText() {
         return Decoder.silentDecode(encodedText);
-    }
-
-    @Override
-    public String toString() {
-        return "DiscussMessage{" +
-                "discussID='" + discussID + '\'' +
-                ", QQ='" + QQ + '\'' +
-                ", encodedText='" + encodedText + '\'' +
-                ", decodedText='" + getText() + '\'' +
-                '}';
     }
 }
