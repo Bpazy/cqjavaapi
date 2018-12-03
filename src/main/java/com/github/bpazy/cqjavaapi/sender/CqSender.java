@@ -2,12 +2,13 @@ package com.github.bpazy.cqjavaapi.sender;
 
 import com.github.bpazy.cqjavaapi.util.Encoder;
 import com.google.common.base.Joiner;
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by Ziyuan
@@ -42,12 +43,14 @@ public class CqSender {
         throw new Error("Encode error or Host name error");
     }
 
-    private void sendMsgPacket(String flag, String msg) throws IOException {
+    @SneakyThrows
+    private void sendMsgPacket(String flag, String msg) {
         DatagramPacket packet = buildMsgPacket(flag, msg);
         server.send(packet);
     }
 
-    private void sendCmdPacket(String... args) throws IOException {
+    @SneakyThrows
+    private void sendCmdPacket(String... args) {
         DatagramPacket packet = buildCmdPacket(args);
         server.send(packet);
 
@@ -55,31 +58,30 @@ public class CqSender {
 
     private DatagramPacket buildCmdPacket(String... args) {
         try {
-            byte[] sentBytes = blankJoiner.join(args).getBytes("UTF8");
+            byte[] sentBytes = blankJoiner.join(args).getBytes(StandardCharsets.UTF_8);
             return new DatagramPacket(sentBytes, sentBytes.length, InetAddress.getByName("127.0.0.1"), 11235);
-        } catch (UnknownHostException | UnsupportedEncodingException e) {
+        } catch (UnknownHostException e) {
             logger.error("Encode error or Host name error", e);
         }
         throw new Error("Encode error or Host name error");
     }
 
-    public void sendPrivateMsg(String qq, String msg) throws IOException {
+    public void sendPrivateMsg(String qq, String msg) {
         sendMsgPacket("PrivateMessage " + qq, msg);
     }
 
-    public void sendGroupMsg(String groupMsg, String msg) throws IOException {
+    public void sendGroupMsg(String groupMsg, String msg) {
         sendMsgPacket("GroupMessage " + groupMsg, msg);
     }
 
-    public void sendDiscussMsg(String discussID, String msg) throws IOException {
+    public void sendDiscussMsg(String discussID, String msg) {
         sendMsgPacket("DiscussMessage " + discussID, msg);
     }
 
     /**
      * @param duration 单位秒
-     * @throws IOException
      */
-    public void sendGroupBan(String groupID, String qq, long duration) throws IOException {
+    public void sendGroupBan(String groupID, String qq, long duration) {
         sendCmdPacket("GroupBan", groupID, qq, duration + "");
     }
 }

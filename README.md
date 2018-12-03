@@ -11,7 +11,7 @@ Maven:
 <dependency>
   <groupId>com.github.bpazy</groupId>
   <artifactId>cqjavaapi</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -33,7 +33,7 @@ server.addMessageHandler(new CqMessageHandler() {
     public boolean discussMessage(DiscussMessage msg) {
         if (msg.getText().equals("我爱你")) {
             // Obtain default message sender and then send discuss message.
-            CqSilentSender.getDefaultSender().sendDiscussMsg(msg.getDiscussID(), "我也爱你");
+            CqSender.getDefaultSender().sendDiscussMsg(msg.getDiscussID(), "我也爱你");
         }
         // Return false if you have not completed the handler.
         // And pass the message to the next handler until true.
@@ -54,5 +54,4 @@ discussMessage (讨论组信息处理器),
 groupMemberDecrease (群组减员信息处理器),     
 groupMemberIncrease (群组增员信息处理器)
 
-`CqSender` 信息发送类,    
-`CqSilentSender` 信息发送类（无IOExcecption）
+`CqSender` 信息发送类
