@@ -1,4 +1,6 @@
 # cqjavaapi
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.bpazy/cqjavaapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.bpazy/cqjavaapi)
+
 酷Q Java API base on cqsocketapi  
 
 
