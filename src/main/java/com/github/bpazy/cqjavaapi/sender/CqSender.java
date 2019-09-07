@@ -8,7 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * Created by Ziyuan
@@ -16,7 +17,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class CqSender {
     private static final Logger logger = LoggerFactory.getLogger(CqSender.class);
-    private static final CqSender INSTANCE = new CqSender();
     private static final Joiner blankJoiner = Joiner.on(" ").skipNulls();
 
     private DatagramSocket server;
@@ -26,21 +26,18 @@ public class CqSender {
             server = new DatagramSocket();
         } catch (SocketException e) {
             logger.error("初始化CqSender失败", e);
+            throw new RuntimeException(e);
         }
-    }
-
-    public static CqSender getDefaultSender() {
-        return INSTANCE;
     }
 
     private DatagramPacket buildMsgPacket(String flag, String msg) {
         try {
-            byte[] send = (flag + " " + new String(Encoder.encode(msg), "UTF8")).getBytes("UTF8");
+            byte[] send = (flag + " " + new String(Encoder.encode(msg), UTF_8)).getBytes(UTF_8);
             return new DatagramPacket(send, send.length, InetAddress.getByName("127.0.0.1"), 11235);
         } catch (UnsupportedEncodingException | UnknownHostException e) {
             logger.error("Encode error or Host name error", e);
         }
-        throw new Error("Encode error or Host name error");
+        throw new RuntimeException("Encode error or Host name error");
     }
 
     @SneakyThrows
@@ -58,12 +55,12 @@ public class CqSender {
 
     private DatagramPacket buildCmdPacket(String... args) {
         try {
-            byte[] sentBytes = blankJoiner.join(args).getBytes(StandardCharsets.UTF_8);
+            byte[] sentBytes = blankJoiner.join(args).getBytes(UTF_8);
             return new DatagramPacket(sentBytes, sentBytes.length, InetAddress.getByName("127.0.0.1"), 11235);
         } catch (UnknownHostException e) {
             logger.error("Encode error or Host name error", e);
         }
-        throw new Error("Encode error or Host name error");
+        throw new RuntimeException("Encode error or Host name error");
     }
 
     public void sendPrivateMsg(String qq, String msg) {

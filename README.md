@@ -14,7 +14,6 @@ Maven:
   <groupId>com.github.bpazy</groupId>
   <artifactId>cqjavaapi</artifactId>
   <version>0.2.2</version>
-  <type>pom</type>
 </dependency>
 ```
 

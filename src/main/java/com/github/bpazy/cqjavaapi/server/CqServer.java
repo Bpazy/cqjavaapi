@@ -34,7 +34,8 @@ public class CqServer {
                 while (true) {
                     server.receive(packet);
                     String msg = buildMessage(packet);
-                    if (isNotHeartbeatMsg(msg)) {
+                    // if is not heartbeat message
+                    if (!"ServerHello".equals(msg)) {
                         logger.debug("Got message: {}", msg);
                     }
                     dispatchMessage(msg);
@@ -45,10 +46,6 @@ public class CqServer {
                 logger.error("server.receive failed", e);
             }
         }).start();
-    }
-
-    private boolean isNotHeartbeatMsg(String msg) {
-        return !"ServerHello".equals(msg);
     }
 
     private void heartbeatThread(int port) {
